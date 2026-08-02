@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07090d">
+    <meta
+      name="description"
+      content="Ashes of Babel: The Fracture Point — a cinematic branching narrative from the Harvest Knights universe."
+    >
+    <title>Ashes of Babel — The Fracture Point</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>𒀭</text></svg>">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <noscript>
+      <div class="noscript-message">This branching narrative requires JavaScript.</div>
+    </noscript>
+
+    <div id="loading-screen" class="loading-screen" role="status">
+      <div class="loading-screen__mark" aria-hidden="true"></div>
+      <p class="loading-screen__title">Opening the retained moment</p>
+    </div>
+
+    <main id="app" class="app" data-mood="neutral" data-telemetry="none">
+      <header class="masthead">
+        <a class="brand" href="./" aria-label="Ashes of Babel home">
+          <span class="brand__title">ASHES OF BABEL</span>
+          <span class="brand__subtitle">THE FRACTURE POINT</span>
+        </a>
+
+        <div class="toolbar" aria-label="Story controls">
+          <button id="restart-button" class="icon-button" type="button" title="Restart story">
+            <span aria-hidden="true">↺</span>
+            <span class="visually-hidden">Restart story</span>
+          </button>
+          <button
+            id="fullscreen-button"
+            class="icon-button"
+            type="button"
+            title="Toggle fullscreen"
+            aria-pressed="false"
+          >
+            <span aria-hidden="true">⛶</span>
+            <span class="visually-hidden">Toggle fullscreen</span>
+          </button>
+        </div>
+      </header>
+
+      <section id="image-stage" class="image-stage stage--empty" aria-label="Scene artwork">
+        <img id="scene-backdrop" class="scene-backdrop" alt="" aria-hidden="true">
+        <div class="scene-backdrop__veil" aria-hidden="true"></div>
+        <img id="scene-image" class="scene-image" alt="">
+        <div class="stage-vignette" aria-hidden="true"></div>
+        <div class="stage-effect" aria-hidden="true"></div>
+      </section>
+
+      <section class="narrative-panel" aria-labelledby="scene-label">
+        <div class="narrative-panel__rule" aria-hidden="true"></div>
+        <p id="scene-label" class="scene-label">ASHES OF BABEL</p>
+        <div id="story-text" class="story-text" aria-live="polite"></div>
+        <div id="story-controls" class="story-controls"></div>
+      </section>
+
+      <p id="status-message" class="visually-hidden" aria-live="polite"></p>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
