@@ -1,6 +1,7 @@
 import { Story } from "./vendor/ink.mjs";
 import { ACT_LABELS, IMAGE_ASSETS } from "./image-manifest.js";
 import { collectStoryBeats } from "./story-engine.js";
+import { createTelemetry } from "./telemetry.js";
 
 const SAVE_KEY = "ashes-of-babel:fracture-point:v1";
 const STORY_URL = "./story/story.json";
@@ -16,8 +17,17 @@ const ui = {
   restart: document.querySelector("#restart-button"),
   fullscreen: document.querySelector("#fullscreen-button"),
   status: document.querySelector("#status-message"),
-  loading: document.querySelector("#loading-screen")
+  loading: document.querySelector("#loading-screen"),
+  privacyNotice: document.querySelector("#privacy-notice"),
+  telemetryAllow: document.querySelector("#telemetry-allow"),
+  telemetryDecline: document.querySelector("#telemetry-decline")
 };
+
+const telemetry = createTelemetry({
+  notice: ui.privacyNotice,
+  allowButton: ui.telemetryAllow,
+  declineButton: ui.telemetryDecline
+});
 
 let story;
 let beats = [];
@@ -232,6 +242,7 @@ function renderBeat() {
     ending.className = "story-complete";
     ending.textContent = "The retained moment is closed.";
     ui.controls.append(ending);
+    telemetry.trackCompletion(story.variablesState["ending_state"]);
   }
 
   ui.storyText.scrollTop = 0;
@@ -262,6 +273,7 @@ function choose(choiceIndex) {
 function restartStory({ ask = true } = {}) {
   if (ask && !window.confirm("Restart Ashes of Babel from the opening telemetry?")) return;
 
+  telemetry.resetSession();
   localStorage.removeItem(SAVE_KEY);
   window.location.reload();
 }
@@ -305,8 +317,11 @@ async function initialise() {
     const storyContent = (await response.text()).replace(/^\uFEFF/, "");
     story = new Story(storyContent);
 
-    if (!restoreProgress()) collectNextPassage();
+    const restored = restoreProgress();
+    if (!restored) collectNextPassage();
     else renderBeat();
+
+    if (!beats[beatIndex]?.ended) telemetry.startSession();
 
     ui.loading.hidden = true;
     ui.app.classList.add("app--ready");

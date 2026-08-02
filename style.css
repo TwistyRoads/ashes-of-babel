@@ -56,6 +56,85 @@ button {
   border: 0 !important;
 }
 
+.privacy-notice {
+  position: fixed;
+  z-index: 30;
+  right: clamp(1rem, 3vw, 2.5rem);
+  bottom: clamp(1rem, 3vw, 2.5rem);
+  width: min(38rem, calc(100vw - 2rem));
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(204, 171, 103, 0.42);
+  background: rgba(8, 10, 14, 0.96);
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.55);
+  color: #d8d4ca;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  backdrop-filter: blur(14px);
+}
+
+.privacy-notice[hidden] {
+  display: none;
+}
+
+.privacy-notice__title,
+.privacy-notice__text {
+  margin: 0;
+}
+
+.privacy-notice__title {
+  color: #e6d3a7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.98rem;
+  letter-spacing: 0.05em;
+}
+
+.privacy-notice__text {
+  margin-top: 0.35rem;
+  color: #aaa69d;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.privacy-notice__actions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.privacy-button {
+  border: 1px solid #b99756;
+  background: #b99756;
+  color: #090b0f;
+  padding: 0.62rem 0.78rem;
+  font: inherit;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.privacy-button--quiet {
+  background: transparent;
+  color: #c8c3b9;
+  border-color: rgba(200, 195, 185, 0.34);
+}
+
+.privacy-button:hover,
+.privacy-button:focus-visible {
+  outline: 1px solid #e6d3a7;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .privacy-notice {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-notice__actions {
+    justify-content: flex-end;
+  }
+}
+
 .noscript-message {
   position: fixed;
   inset: 0;

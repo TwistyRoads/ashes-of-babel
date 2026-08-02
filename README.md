@@ -18,6 +18,12 @@ Then open <http://localhost:8000>.
 
 Progress is saved automatically in the browser. The restart control in the upper-right clears that save.
 
+## Anonymous telemetry
+
+Optional, consent-based telemetry can count unique browsers, sessions, completions, completion rate, and ending distribution. It never records identity, contact details, IP addresses, browser fingerprints, referrers, or story choice text. Collection failures are deliberately ignored by the player so they cannot interrupt the story.
+
+The browser client is disabled until a collector URL is added to `telemetry-config.js`. Deployment and private-dashboard instructions are in [`telemetry-worker/README.md`](telemetry-worker/README.md).
+
 ## GitHub Pages
 
 The checked-in files are ready to serve from the repository root. In GitHub:
@@ -37,6 +43,9 @@ All asset paths are relative, so the site works under a GitHub Pages project sub
 ├── style.css                 Responsive cinematic presentation
 ├── main.js                   Player UI, persistence, and controls
 ├── story-engine.js           Ink output → visual beat adapter
+├── telemetry.js              Consent and failure-isolated event client
+├── telemetry-config.js       Serverless collector URL (blank = disabled)
+├── telemetry-worker/         Collector, D1 schema, and private dashboard
 ├── image-manifest.js         Image paths, alt text, and act labels
 ├── assets/images/            Web-optimised WebP assets used at runtime
 ├── images/                   Original PNG masters

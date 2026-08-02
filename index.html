@@ -65,6 +65,20 @@
       <p id="status-message" class="visually-hidden" aria-live="polite"></p>
     </main>
 
+    <aside id="privacy-notice" class="privacy-notice" aria-labelledby="privacy-title" hidden>
+      <div>
+        <p id="privacy-title" class="privacy-notice__title">Anonymous story statistics</p>
+        <p class="privacy-notice__text">
+          May this site store a random browser ID to count visits, completions, and ending categories?
+          No names, contact details, fingerprints, or choice text are collected.
+        </p>
+      </div>
+      <div class="privacy-notice__actions">
+        <button id="telemetry-decline" class="privacy-button privacy-button--quiet" type="button">No thanks</button>
+        <button id="telemetry-allow" class="privacy-button" type="button">Allow statistics</button>
+      </div>
+    </aside>
+
     <script type="module" src="./main.js"></script>
   </body>
 </html>
