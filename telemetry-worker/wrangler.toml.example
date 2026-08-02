@@ -1,0 +1,15 @@
+name = "ashes-of-babel-telemetry"
+main = "src/worker.js"
+compatibility_date = "2026-08-02"
+workers_dev = true
+
+[observability]
+enabled = false
+
+[vars]
+SITE_ORIGIN = "https://twistyroads.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ashes-of-babel-telemetry"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"

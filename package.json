@@ -7,7 +7,7 @@
   "scripts": {
     "build:story": "inkjs-compiler src/ashes_of_babel_fracture_point.ink -o story/story.json",
     "audit": "node scripts/audit-assets.mjs",
-    "test": "node tests/story-smoke.mjs && node tests/layout-contract.mjs && npm run audit",
+    "test": "node tests/story-smoke.mjs && node tests/layout-contract.mjs && node tests/telemetry-client.mjs && node tests/telemetry-worker.mjs && npm run audit",
     "build": "npm run build:story && npm test"
   },
   "devDependencies": {
