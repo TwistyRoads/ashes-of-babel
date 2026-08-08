@@ -4,6 +4,10 @@ A cinematic branching narrative from the *Harvest Knights* universe.
 
 The player joins Cain and Neba inside a retained moment at the destruction of Babel. The visible history is fixed; its meaning is not. Investigation, judgement, and counterfactual replay determine what Neba is able to recognise about the boundary surrounding their reality.
 
+## Story origins
+
+The interactive narrative was adapted from an earlier prose story. The original source story and a short explanation of how the linear fiction was transformed into a branching narrative are preserved under [`story-origins/`](story-origins/).
+
 ## Play locally
 
 The project is a static site, but it must be served over HTTP because the browser loads the compiled Ink story with `fetch`.
@@ -40,20 +44,21 @@ All asset paths are relative, so the site works under a GitHub Pages project sub
 ```text
 .
 ├── index.html                 Browser shell
-├── style.css                 Responsive cinematic presentation
-├── main.js                   Player UI, persistence, and controls
-├── story-engine.js           Ink output → visual beat adapter
-├── telemetry.js              Consent and failure-isolated event client
-├── telemetry-config.js       Serverless collector URL (blank = disabled)
-├── telemetry-worker/         Collector, D1 schema, and private dashboard
-├── image-manifest.js         Image paths, alt text, and act labels
-├── assets/images/            Web-optimised WebP assets used at runtime
-├── images/                   Original PNG masters
-├── src/                      Authoritative Ink source
-├── story/story.json          Compiled Ink story
-├── vendor/                   Pinned inkjs browser runtime and licence
-├── scripts/                  Build audits
-└── tests/                    Runtime smoke test
+├── style.css                  Responsive cinematic presentation
+├── main.js                    Player UI, persistence, and controls
+├── story-engine.js            Ink output → visual beat adapter
+├── telemetry.js               Consent and failure-isolated event client
+├── telemetry-config.js        Serverless collector URL (blank = disabled)
+├── telemetry-worker/          Collector, D1 schema, and private dashboard
+├── image-manifest.js          Image paths, alt text, and act labels
+├── assets/images/             Web-optimised WebP assets used at runtime
+├── images/                    Original PNG masters
+├── src/                       Authoritative Ink source
+├── story/story.json           Compiled Ink story
+├── story-origins/             Original prose source and adaptation context
+├── vendor/                    Pinned inkjs browser runtime and licence
+├── scripts/                   Build audits
+└── tests/                     Runtime smoke test
 ```
 
 ## Rebuild and verify
