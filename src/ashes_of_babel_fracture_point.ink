@@ -317,6 +317,30 @@ Cain does not explain any of it.
     CAIN: "It was called containment."
     -> dead_evidence_response
 
+* {not examined_missile} [Examine the missile.]
+    ~ examined_missile = true
+    ~ saw_missile = true
+    ~ library_evidence_count += 1
+    # image:anunna_missile_suspended
+    Its surface is smooth except where heat has begun to flower across the casing. Along its spine, an identification lattice pulses beneath the metal.
+
+    Neba knows the signature.
+
+    # speaker:neba
+    NEBA: "This weapon is Anunna."
+
+    # speaker:cain
+    CAIN: "Yes."
+
+    NEBA: "Not salvaged. Not copied. Military issue."
+
+    CAIN: "Yes."
+
+    She follows the missile's frozen path through the ruined chamber, beyond the shelves, toward the war-fighter climbing away from the city.
+
+    Cain does not look up.
+    -> library_investigation
+
 === dead_evidence_response ===
 * ["Containment is the language used when murder requires procedure."]
     ~ blamed_system = true
@@ -342,30 +366,6 @@ Cain does not explain any of it.
     Neba keeps her eyes on the woman and the boy.
 
     The word _containment_ dies between them.
-    -> library_investigation
-
-* {not examined_missile} [Examine the missile.]
-    ~ examined_missile = true
-    ~ saw_missile = true
-    ~ library_evidence_count += 1
-    # image:anunna_missile_suspended
-    Its surface is smooth except where heat has begun to flower across the casing. Along its spine, an identification lattice pulses beneath the metal.
-
-    Neba knows the signature.
-
-    # speaker:neba
-    NEBA: "This weapon is Anunna."
-
-    # speaker:cain
-    CAIN: "Yes."
-
-    NEBA: "Not salvaged. Not copied. Military issue."
-
-    CAIN: "Yes."
-
-    She follows the missile's frozen path through the ruined chamber, beyond the shelves, toward the war-fighter climbing away from the city.
-
-    Cain does not look up.
     -> library_investigation
 
 === confront_cain ===
@@ -688,6 +688,7 @@ CAIN: "That is what I brought you to judge."
 
 === council_inspection ===
 # scene:frozen_council_inspection
+# image:frozen_council_fracture
 # mood:investigative
 { debug_mode:
     [DEBUG: inspections={council_inspection_count}, Enlil={inspected_enlil}, Ninlil={inspected_ninlil}, Enki={inspected_enki}, Inanna={inspected_inanna}, Enki_judgement={judged_enki}, Inanna_judgement={judged_inanna}]
@@ -1214,6 +1215,7 @@ CAIN: "Now you understand."
 
 === collapse_interpretation ===
 # scene:new_universe_interpretation
+# image:new_universe_ignition
 # mood:judgement
 * [Conclude that saving Babel destroyed the universe.]
     ~ interpretation = "counterfactual_catastrophe"
@@ -1403,7 +1405,7 @@ NEBA: "I understand what you showed me. That is not the same thing."
 * {can_question_binary()} [Neither branch is the real choice.]
     -> unseen_constraint_deduction
 
-* [Accept that Enki's intervention led to catastrophe.]
+* {interpretation == "counterfactual_catastrophe"} [Accept that Enki's intervention led to catastrophe.]
     ~ ending_state = "consequence_and_memory"
     # ending:consequence_and_memory
     # speaker:neba
@@ -1610,7 +1612,7 @@ For a while, neither of them speaks.
         ELENA: "The last part still proves less than it appears to."
 
         # speaker:johannes
-        JOHANNES: "It also refuses to disappear when the projection is examined again."
+        JOHANNES: "It also refuses to disappear under examination."
 
         ELENA: "Persistence is not explanation."
 
